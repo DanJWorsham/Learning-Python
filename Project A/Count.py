@@ -1,8 +1,12 @@
 import pygame as pg
 
+#Set up system Variables
+SCREEN_WIDTH = 300
+SCREEN_HEIGHT = 300
+
 #Setup pygame screen
 pg.display.init()
-screen = pg.display.set_mode((200,200))
+screen = pg.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pg.display.flip()
 
 #Initialize Font
@@ -37,17 +41,17 @@ while running:
         count_tick = False
         count_current += 1
         pg.time.set_timer(COUNT_EVENT,1000)
-        font = fontSize((count_current * 10) + BASE_FONT_SIZE)
+        font = fontSize((count_current * 20) + BASE_FONT_SIZE)
 
     if count_current > count_to:
         count_current = 1
-        font = fontSize((count_current * 10) + BASE_FONT_SIZE)
+        font = fontSize((count_current * 20) + BASE_FONT_SIZE)
 
 
     
     #Draw Number on screen
     screen.fill(BLACK)
     Text_Surface = font.render(str(count_current), True, WHITE)
-    screen.blit(Text_Surface, Text_Surface.get_rect(center=(100,100)))
+    screen.blit(Text_Surface, Text_Surface.get_rect(center=(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)))
     pg.display.flip()
 
