@@ -21,6 +21,9 @@ count_tick = True
 count_current = 1
 count_to = 10
 
+def  fontSize (size):
+    return pg.font.SysFont(None, size)
+
 # Running Loop
 while running:
     for event in pg.event.get():
@@ -34,12 +37,17 @@ while running:
         count_tick = False
         count_current += 1
         pg.time.set_timer(COUNT_EVENT,1000)
+        font = fontSize((count_current * 10) + BASE_FONT_SIZE)
 
     if count_current > count_to:
         count_current = 1
+        font = fontSize((count_current * 10) + BASE_FONT_SIZE)
+
+
     
     #Draw Number on screen
     screen.fill(BLACK)
     Text_Surface = font.render(str(count_current), True, WHITE)
     screen.blit(Text_Surface, Text_Surface.get_rect(center=(100,100)))
     pg.display.flip()
+
